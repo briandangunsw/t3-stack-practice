@@ -2,9 +2,11 @@ import Link from "next/link";
 
 import { LatestPost } from "npm/app/_components/post";
 import { api, HydrateClient } from "npm/trpc/server";
+import supabase from "../config/supabaseClient"
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
+  console.log(supabase);
 
   void api.post.getLatest.prefetch();
 
